@@ -6,16 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 protocol IMappingService{
-	func map(entity: PopularMovieEntity) -> MovieModel
+	func movieInfoMap(entity: PopularMovieEntity) -> MovieModel
+	func detailInfoMap(entity: DetailEntity, image: UIImage?) -> DetailModel
 }
 
 struct MappingService: IMappingService{
 	
-	func map(entity: PopularMovieEntity) -> MovieModel {
-		 MovieModel(title: entity.title,
-					   overview: entity.overview,
-					   imageURL: entity.imageURL)
+	func movieInfoMap(entity: PopularMovieEntity) -> MovieModel {
+		MovieModel(title: entity.title,
+				   overview: entity.overview,
+				   imageURL: entity.imageURL)
+	}
+	func detailInfoMap(entity: DetailEntity, image: UIImage?) -> DetailModel {
+		DetailModel(title: entity.title,
+					overview: entity.overview,
+					backdropPath: entity.backdropPath,
+					image: image)
 	}
 }

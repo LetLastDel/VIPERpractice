@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol IListOfMoviewInteractor: AnyObject{
+protocol IMovieListInteractor: AnyObject{
 	func getListOfMovies() async throws -> PopularMovieResponceEntity
 	func getImage(url: String) async throws -> UIImage? 
 }
 
-class ListOfMoviewInteractor: IListOfMoviewInteractor {
-	weak var presenter: IListOfMoviesPresenter?
+class MovieListInteractor: IMovieListInteractor {
+	weak var presenter: IMovieListPresenter?
 	var networkService: INetworkService
 	
 	init(networkService: INetworkService) {
@@ -22,7 +22,7 @@ class ListOfMoviewInteractor: IListOfMoviewInteractor {
 	}
 	
 	func getListOfMovies() async throws -> PopularMovieResponceEntity {
-		try await networkService.getMovie(server: Server.mainServer, endPoint: EndPoint.popular)
+		try await networkService.getMovie(server: Server.mainServer, endPoint: EndPoint.popular, id: nil, snakeCase: false)
 	}
 	
 	func getImage(url: String) async throws -> UIImage? {

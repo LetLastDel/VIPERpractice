@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-class ListOfMovieView: UIView {
+class MovieListView: UIView {
 	let tableView = UITableView()
 	
 	init() {
 		super.init(frame: CGRect())
-		backgroundColor = .systemGreen
+		backgroundColor = .white
 		setView()
 		setConstraints()
 	}
@@ -30,7 +30,7 @@ class ListOfMovieView: UIView {
 			tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
 			tableView.leftAnchor.constraint(equalTo: leftAnchor),
 			tableView.rightAnchor.constraint(equalTo: rightAnchor),
-			tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
+			tableView.bottomAnchor.constraint(equalTo: bottomAnchor)])
 	}
 	
 	required init?(coder: NSCoder) {

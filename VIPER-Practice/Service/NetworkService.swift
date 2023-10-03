@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 
 protocol INetworkService {
-	func getMovie(server: Server, endPoint: EndPoint) async throws -> PopularMovieResponceEntity
-	func dwImage(server: Server,endPoint: EndPoint, url: String) async throws -> UIImage? 
-
+	func getMovie<T: Decodable>(server: Server, endPoint: EndPoint, id: String?, snakeCase: Bool) async throws -> T
+	func dwImage(server: Server,endPoint: EndPoint, url: String) async throws -> UIImage?
 }
 
 class NetworkService: INetworkService {
@@ -21,13 +20,17 @@ class NetworkService: INetworkService {
 		self.urlManager = urlManager
 	}
 	
-	func getMovie(server: Server, endPoint: EndPoint) async throws -> PopularMovieResponceEntity {
-		guard let url = urlManager.createURL(server: server, endPoint: endPoint, image: false, imageURL: "") else { throw NetworkError.badUrl}
+	func getMovie<T:Decodable>(server: Server, endPoint: EndPoint, id: String?, snakeCase: Bool) async throws -> T {
+		guard let url = urlManager.createURL(server: server, endPoint: endPoint, image: false, imageURL: "", id: id) else { throw NetworkError.badUrl}
+		print(url)
 		let responce = try await URLSession.shared.data(from: url)
 		let data = responce.0
 		let decoder = JSONDecoder()
+		if snakeCase{
+			decoder.keyDecodingStrategy = .convertFromSnakeCase
+		}
 		do{
-			let movies = try decoder.decode(PopularMovieResponceEntity.self, from: data)
+			let movies = try decoder.decode(T.self, from: data)
 			return movies
 		} catch {
 			throw NetworkError.invalidDecoding
@@ -35,7 +38,7 @@ class NetworkService: INetworkService {
 	}
 	
 	func dwImage(server: Server,endPoint: EndPoint, url: String) async throws -> UIImage? {
-		guard let url = urlManager.createURL(server: server, endPoint: endPoint, image: true, imageURL: url) else { throw NetworkError.badUrl}
+		guard let url = urlManager.createURL(server: server, endPoint: endPoint, image: true, imageURL: url, id: nil) else { throw NetworkError.badUrl}
 		do {
 			let responce = try await URLSession.shared.data(from: url)
 			let data = responce.0

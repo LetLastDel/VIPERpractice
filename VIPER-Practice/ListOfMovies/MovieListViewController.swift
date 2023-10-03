@@ -8,23 +8,25 @@
 import Foundation
 import UIKit
 
-protocol IListOfMoviesView: AnyObject {
+protocol IMovieListView: AnyObject {
 	func update(movies: [MovieModel])
+
 }
 
-class ListOfMoviesViewController: UIViewController {
-	var presenter: IListOfMoviesPresenter?
-	var mainView = ListOfMovieView()
-
+class MovieListViewController: UIViewController {
+	var presenter: IMovieListPresenter?
+	var mainView = MovieListView()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		presenter?.viewDidLoaded()
 		view = mainView
 		mainView.tableView.dataSource = self
-	}	
+		mainView.tableView.delegate = self
+	}
 }
 
-extension ListOfMoviesViewController: IListOfMoviesView {
+extension MovieListViewController: IMovieListView {
 	func update(movies: [MovieModel]) {
 		DispatchQueue.main.async{
 			self.mainView.tableView.reloadData()
@@ -32,7 +34,7 @@ extension ListOfMoviesViewController: IListOfMoviesView {
 	}
 }
 
-extension ListOfMoviesViewController: UITableViewDataSource {
+extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		presenter?.movieModels.count ?? 0
 	}
@@ -43,4 +45,9 @@ extension ListOfMoviesViewController: UITableViewDataSource {
 		cell.configureCell(model: model ?? MovieModel(title: "", overview: "", imageURL: ""))
 		return cell
 	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		presenter?.onTapCell(index: indexPath.row)
+	}
+	
 }

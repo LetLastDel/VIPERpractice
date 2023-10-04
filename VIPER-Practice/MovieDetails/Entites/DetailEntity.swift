@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Результат запроса по URL
 struct DetailEntity: Decodable {
 	let title: String
 	let overview: String

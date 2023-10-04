@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 
 protocol IMovieListInteractor: AnyObject{
+	/// Метод,  для получения списка популярных фильмов.
+	/// - Returns: Возвращает модель списка фильмов
 	func getListOfMovies() async throws -> PopularMovieResponceEntity
-	func getImage(url: String) async throws -> UIImage? 
+	/// Метод, для загрузки изображения
+	/// - Parameter url: Принимает ссылку на изображение
+	/// - Returns: Опционально возвращает изображение
+	func getImage(url: String) async throws -> UIImage?
 }
 
 class MovieListInteractor: IMovieListInteractor {

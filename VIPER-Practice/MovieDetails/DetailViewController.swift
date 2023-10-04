@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+/// Обновляет представление, после получения данных о  фильме
 protocol IDetailView: AnyObject {
 	func update(movies: DetailModel)
 }
@@ -29,6 +29,5 @@ extension DetailViewController: IDetailView {
 		mainView.titleLabel.text = movies.title
 		mainView.descLabel.text = movies.overview
 		mainView.imageView.image = movies.image
-		//Допили картинку
 	}
 }

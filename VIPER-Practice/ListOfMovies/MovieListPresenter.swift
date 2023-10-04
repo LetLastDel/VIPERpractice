@@ -6,9 +6,14 @@
 //
 
 import Foundation
+
 protocol IMovieListPresenter: AnyObject{
+	/// Свойство, предназначенное для хранения моделей фильмов, которые будут отображаться в списке фильмов
 	var movieModels: [MovieModel] { get set }
+	/// Метод, вызываемый при загрузке вью списка фильмов.
 	func viewDidLoaded()
+	/// Метод, вызываемый при выборе ячейки списка фильмов.
+	/// - Parameter index: Индекс выбранной ячейки
 	func onTapCell(index: Int)
 }
 
@@ -32,16 +37,14 @@ class MovieListPresenter: IMovieListPresenter{
 			movieModels = fetchedMovies.map(mapService.movieInfoMap(entity:))
 			for (index, models) in self.movieModels.enumerated() {
 				let image = try await interactor.getImage(url: models.imageURL)
-					movieModels[index] = MovieModel(title: models.title, overview: models.overview, imageURL: models.imageURL, image: image)
+				movieModels[index] = MovieModel(title: models.title, overview: models.overview, imageURL: models.imageURL, image: image)
 			}
-				view?.update(movies: movieModels)
+			view?.update(movies: movieModels)
 		}
 	}
 	
 	func onTapCell(index: Int) {
-		let id = fetchedMovies[index].id
 		router.showDetail(movieId: fetchedMovies[index].id.description)
-		print(id)
 	}
 }
 

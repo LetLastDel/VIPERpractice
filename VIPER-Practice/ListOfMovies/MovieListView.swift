@@ -17,11 +17,11 @@ class MovieListView: UIView {
 		setView()
 		setConstraints()
 	}
-	
+	///Настраиваем таблицу, а в данном случае регистрируем ячейку в таблице
 	func setView(){
 		tableView.register(MovieViewCell.self, forCellReuseIdentifier: "MovieViewCell")
 	}
-	
+	/// Задаем констрейты для представления
 	func setConstraints(){
 		addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false

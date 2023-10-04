@@ -26,7 +26,7 @@ class DetailView: UIView {
 	
 	let descLabel: UILabel = {
 		let label = UILabel()
-		label.numberOfLines = 2
+		label.numberOfLines = 0
 		label.font = .systemFont(ofSize: 12, weight: .bold, width: .condensed)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -37,6 +37,7 @@ class DetailView: UIView {
 		setConstraints()
 	}
 	
+	/// Задаем констрейты для представления
 	func setConstraints(){
 		addSubview(imageView)
 		addSubview(titleLabel)
@@ -44,16 +45,14 @@ class DetailView: UIView {
 		
 		NSLayoutConstraint.activate([
 			imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-			imageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+			imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 12),
 			imageView.heightAnchor.constraint(equalToConstant: 200),
-			imageView.widthAnchor.constraint(equalToConstant: 300)
-		])
+			imageView.widthAnchor.constraint(equalToConstant: 300)])
 		
 		NSLayoutConstraint.activate([
 			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-			titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20)
-		])
+			titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20)])
 		
 		NSLayoutConstraint.activate([
 			descLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 protocol IDetailPresenter: AnyObject {
+	/// Метод, вызываемый при загрузке вью списка фильмов.
 	func viewDidLoaded()
-	var view: IDetailView? { get }
+	///Свойство, хранящее id выбранного фильма
 	var movieId: String { get }
 }
 

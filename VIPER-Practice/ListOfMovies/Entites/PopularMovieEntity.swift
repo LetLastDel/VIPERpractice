@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Результат запроса по URL, содержит в себе массив сущностей списка фильма
 struct PopularMovieResponceEntity: Decodable {
 	let results: [PopularMovieEntity]
 }

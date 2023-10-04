@@ -60,8 +60,7 @@ class MovieViewCell: UITableViewCell {
 			movieDescription.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 20),
 			movieDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
 			movieDescription.topAnchor.constraint(equalTo: movieName.bottomAnchor, constant: 8),
-			movieDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
-		])
+			movieDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)])
 	}
 	
 	func configureCell(model: MovieModel) {
@@ -69,7 +68,7 @@ class MovieViewCell: UITableViewCell {
 		movieDescription.text = model.overview
 		movieImageView.image = model.image
 	}
-
+	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

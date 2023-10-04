@@ -9,25 +9,33 @@ import Foundation
 import UIKit
 
 protocol IMovieListRouter{
-	var detailRouter: DetailRouter? { get }
-	var viewController: MovieListViewController? { get }
+	/// Контроллер со списком фильмов
+	var viewController: UIViewController? { get }
+	/// Метод, собирающий окно
+	/// - Parameter window: возвращает готовый модуль с навигацией
 	func showListOfMovies(window: UIWindow?)
+	/// Метод, отправляющий следующему роутеру данные
+	/// - Parameter movieId: Выкидывает айди фильма
 	func showDetail(movieId: String)
 }
 
-class MovieListRouter: IMovieListRouter{
+protocol IMovieListRouterNavigation{
+	/// Свойство с ссылкой на следующий роутер
+	var detailRouter: DetailRouter? { get }
+}
+
+class MovieListRouter: IMovieListRouter {
 	var detailRouter: DetailRouter?
-	var viewController: MovieListViewController?
-
-	func showListOfMovies(window: UIWindow?) {
+	var viewController: UIViewController?
+	
+	init() {
 		self.detailRouter = DetailRouter()
-		let interactor = MovieListInteractor(networkService: NetworkService(urlManager: URLManager()))
-		let presenter = MovieListPresenter(interactor: interactor, router: self, mapService: MappingService())
-		viewController = MovieListViewController()
-		viewController?.presenter = presenter
-		presenter.view = viewController
-
-		window?.rootViewController = viewController
+	}
+	
+	func showListOfMovies(window: UIWindow?) {
+		viewController = MovieListModuleBuilder.build()
+		let navigationController = UINavigationController(rootViewController: viewController!)
+		window?.rootViewController = navigationController
 		window?.makeKeyAndVisible()
 	}
 	

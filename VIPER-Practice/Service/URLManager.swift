@@ -7,7 +7,16 @@
 
 import Foundation
 
+/// Протокол для URLManager, содержащий метод создания ссылки
 protocol IURLManager {
+	/// Метод создания ссылки
+	/// - Parameters:
+	///   - server: Принимает из enum ссылку на сервер
+	///   - endPoint: Принимает из enum конечную точку
+	///   - image: Булевое значение, если true - то ссылка создается для картинки, если нет, то для моделей
+	///   - imageURL: Если image = true, то сюда передается ссылка на изображение
+	///   - id: Принимает id фильма для создания ссылки на описание фильма
+	/// - Returns: Возвращает ссылку, используюмую в INetworkService
 	func createURL(server: Server, endPoint: EndPoint, image: Bool, imageURL: String, id: String?) -> URL?
 }
 

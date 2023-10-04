@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E474B742ACD97B700707045 /* DetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E474B732ACD97B700707045 /* DetailModuleBuilder.swift */; };
 		2EAF792A2ACC04440064E2E1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF79292ACC04440064E2E1 /* DetailView.swift */; };
 		2EAF792C2ACC044E0064E2E1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF792B2ACC044E0064E2E1 /* DetailViewController.swift */; };
 		2EAF792E2ACC04570064E2E1 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF792D2ACC04570064E2E1 /* DetailPresenter.swift */; };
@@ -29,10 +30,11 @@
 		2EDCEF4D2ACB08030003E518 /* MappingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCEF4C2ACB08030003E518 /* MappingService.swift */; };
 		2EDCEF502ACB09890003E518 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCEF4F2ACB09890003E518 /* URLManager.swift */; };
 		2EDCEF522ACB0AFC0003E518 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCEF512ACB0AFC0003E518 /* NetworkService.swift */; };
-		2EDCEF552ACB28A80003E518 /* ListOfMoviesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCEF542ACB28A80003E518 /* ListOfMoviesBuilder.swift */; };
+		2EDCEF552ACB28A80003E518 /* MovieListModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCEF542ACB28A80003E518 /* MovieListModuleBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E474B732ACD97B700707045 /* DetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleBuilder.swift; sourceTree = "<group>"; };
 		2EAF79292ACC04440064E2E1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2EAF792B2ACC044E0064E2E1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2EAF792D2ACC04570064E2E1 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -57,7 +59,7 @@
 		2EDCEF4C2ACB08030003E518 /* MappingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingService.swift; sourceTree = "<group>"; };
 		2EDCEF4F2ACB09890003E518 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		2EDCEF512ACB0AFC0003E518 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		2EDCEF542ACB28A80003E518 /* ListOfMoviesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfMoviesBuilder.swift; sourceTree = "<group>"; };
+		2EDCEF542ACB28A80003E518 /* MovieListModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListModuleBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				2EAF792D2ACC04570064E2E1 /* DetailPresenter.swift */,
 				2EAF792F2ACC04600064E2E1 /* DetailInteractor.swift */,
 				2EAF79312ACC04680064E2E1 /* DetailRouter.swift */,
+				2E474B732ACD97B700707045 /* DetailModuleBuilder.swift */,
 				2EAF79352ACC04780064E2E1 /* Entites */,
 			);
 			path = MovieDetails;
@@ -140,7 +143,7 @@
 				2EDCEF3A2ACABECD0003E518 /* MovieListPresenter.swift */,
 				2EDCEF3C2ACABED60003E518 /* MovieListInteractor.swift */,
 				2EDCEF3E2ACABEDE0003E518 /* MovieListRouter.swift */,
-				2EDCEF542ACB28A80003E518 /* ListOfMoviesBuilder.swift */,
+				2EDCEF542ACB28A80003E518 /* MovieListModuleBuilder.swift */,
 				2EDCEF532ACB0CC90003E518 /* Components */,
 				2EDCEF402ACABEE90003E518 /* Entites */,
 			);
@@ -257,7 +260,7 @@
 				2EDCEF502ACB09890003E518 /* URLManager.swift in Sources */,
 				2EAF79322ACC04680064E2E1 /* DetailRouter.swift in Sources */,
 				2EAF79302ACC04600064E2E1 /* DetailInteractor.swift in Sources */,
-				2EDCEF552ACB28A80003E518 /* ListOfMoviesBuilder.swift in Sources */,
+				2EDCEF552ACB28A80003E518 /* MovieListModuleBuilder.swift in Sources */,
 				2EDCEF4B2ACB05360003E518 /* MovieModel.swift in Sources */,
 				2EDCEF4D2ACB08030003E518 /* MappingService.swift in Sources */,
 				2EDCEF522ACB0AFC0003E518 /* NetworkService.swift in Sources */,
@@ -270,6 +273,7 @@
 				2EDCEF3F2ACABEDE0003E518 /* MovieListRouter.swift in Sources */,
 				2EDCEF242AC6D4360003E518 /* AppDelegate.swift in Sources */,
 				2EDCEF482ACADD9A0003E518 /* MovieListView.swift in Sources */,
+				2E474B742ACD97B700707045 /* DetailModuleBuilder.swift in Sources */,
 				2EAF792A2ACC04440064E2E1 /* DetailView.swift in Sources */,
 				2EDCEF262AC6D4360003E518 /* SceneDelegate.swift in Sources */,
 				2EAF792E2ACC04570064E2E1 /* DetailPresenter.swift in Sources */,

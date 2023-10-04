@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Стурктура сущности, которая содержит только необходимые для вью данные
 struct MovieModel {
 	var title: String
 	var overview: String

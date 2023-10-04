@@ -9,19 +9,17 @@ import Foundation
 import UIKit
 
 protocol IDetailRouter: AnyObject{
+	/// Идет в билдер, там собирает модуль и показывает нам его
+	/// - Parameters:
+	///   - from: Принимает в себя предыдущее представление
+	///   - movieId: Принимает id фильма для передачи его в билдер
 	func showDetail(from: UIViewController, movieId: String)
 }
 
 class DetailRouter {
 	func showDetail(from: UIViewController, movieId: String){
-		let interactor = DetailInteractor(networkService: NetworkService(urlManager: URLManager()))
-		let presenter = DetailPresenter(movieId: movieId, interactor: interactor, mapService: MappingService())
-		let viewController = DetailViewController()
-		viewController.presenter = presenter
-		presenter.view = viewController
-		viewController.modalPresentationStyle = .fullScreen
-		
-		from.present(viewController, animated: true)
+		let viewController = DetailModuleBuilder.biuld(movieId: movieId)
+		from.navigationController?.pushViewController(viewController, animated: true)
 	}
 }
 

@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
+/// Обновляет таблицу, после получения списка фильмов
 protocol IMovieListView: AnyObject {
 	func update(movies: [MovieModel])
-
 }
 
 class MovieListViewController: UIViewController {
@@ -49,5 +49,4 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		presenter?.onTapCell(index: indexPath.row)
 	}
-	
 }

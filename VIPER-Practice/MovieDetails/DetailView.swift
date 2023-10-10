@@ -37,7 +37,6 @@ class DetailView: UIView {
 		setConstraints()
 	}
 	
-	/// Задаем констрейты для представления
 	func setConstraints(){
 		addSubview(imageView)
 		addSubview(titleLabel)

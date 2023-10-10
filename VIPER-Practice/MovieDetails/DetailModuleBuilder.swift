@@ -9,9 +9,9 @@ import Foundation
 
 class DetailModuleBuilder{
 	static func biuld(movieId: String) -> DetailViewController {
+		let viewController = DetailViewController()
 		let interactor = DetailInteractor(networkService: NetworkService(urlManager: URLManager()))
 		let presenter = DetailPresenter(movieId: movieId, interactor: interactor, mapService: MappingService())
-		let viewController = DetailViewController()
 		viewController.presenter = presenter
 		presenter.view = viewController
 		

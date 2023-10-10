@@ -14,12 +14,12 @@ protocol IMappingService{
 }
 
 struct MappingService: IMappingService{
-	
 	func movieInfoMap(entity: PopularMovieEntity) -> MovieModel {
 		MovieModel(title: entity.title,
 				   overview: entity.overview,
 				   imageURL: entity.imageURL)
 	}
+	
 	func detailInfoMap(entity: DetailEntity, image: UIImage?) -> DetailModel {
 		DetailModel(title: entity.title,
 					overview: entity.overview,

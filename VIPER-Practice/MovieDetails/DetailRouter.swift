@@ -13,13 +13,18 @@ protocol IDetailRouter: AnyObject{
 	/// - Parameters:
 	///   - from: Принимает в себя предыдущее представление
 	///   - movieId: Принимает id фильма для передачи его в билдер
-	func showDetail(from: UIViewController, movieId: String)
+	func showDetail(from: UIViewController, movieId: String, scroll: Bool)
 }
 
 class DetailRouter {
-	func showDetail(from: UIViewController, movieId: String){
+	func showDetail(from: UIViewController, movieId: String, scroll: Bool){
 		let viewController = DetailModuleBuilder.biuld(movieId: movieId)
-		from.navigationController?.pushViewController(viewController, animated: true)
+		if scroll {
+			  from.present(viewController, animated: true)
+		} else {
+			from.navigationController?.pushViewController(viewController, animated: true)
+		}
 	}
 }
+
 

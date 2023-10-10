@@ -9,19 +9,16 @@ import Foundation
 import UIKit
 
 protocol IMovieListRouter{
+	/// Свойство с ссылкой на следующий роутер
+	var detailRouter: DetailRouter? { get }
 	/// Контроллер со списком фильмов
 	var viewController: UIViewController? { get }
 	/// Метод, собирающий окно
 	/// - Parameter window: возвращает готовый модуль с навигацией
-	func showListOfMovies(window: UIWindow?)
+	func makeWindow(window: UIWindow?)
 	/// Метод, отправляющий следующему роутеру данные
 	/// - Parameter movieId: Выкидывает айди фильма
 	func showDetail(movieId: String)
-}
-
-protocol IMovieListRouterNavigation{
-	/// Свойство с ссылкой на следующий роутер
-	var detailRouter: DetailRouter? { get }
 }
 
 class MovieListRouter: IMovieListRouter {
@@ -32,7 +29,7 @@ class MovieListRouter: IMovieListRouter {
 		self.detailRouter = DetailRouter()
 	}
 	
-	func showListOfMovies(window: UIWindow?) {
+	func makeWindow(window: UIWindow?) {
 		viewController = MovieListModuleBuilder.build()
 		let navigationController = UINavigationController(rootViewController: viewController!)
 		window?.rootViewController = navigationController
@@ -41,6 +38,7 @@ class MovieListRouter: IMovieListRouter {
 	
 	func showDetail(movieId: String) {
 		guard let vc = viewController else { return }
-		detailRouter?.showDetail(from: vc, movieId: movieId)
+		detailRouter?.showDetail(from: vc, movieId: movieId, scroll: false)
 	}
 }
+

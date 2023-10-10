@@ -10,18 +10,14 @@ import UIKit
 
 class MovieListModuleBuilder {
 	static func build() -> MovieListViewController {
-		var viewController = MovieListViewController()
+		let viewController = MovieListViewController()
 		let router = MovieListRouter()
 		let interactor = MovieListInteractor(networkService: NetworkService(urlManager: URLManager()))
 		let presenter = MovieListPresenter(interactor: interactor, router: router, mapService: MappingService())
-		viewController = MovieListViewController()
 		router.viewController = viewController
-		viewController.presenter = presenter
-		presenter.view = viewController
 		viewController.presenter = presenter
 		presenter.view = viewController
 		
 		return viewController
 	}
 }
-

@@ -14,6 +14,8 @@ class MovieViewCell: UITableViewCell {
 	let movieImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFit
+		imageView.clipsToBounds = true
+		imageView.layer.cornerRadius = 10
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
 	}()
@@ -47,14 +49,14 @@ class MovieViewCell: UITableViewCell {
 		NSLayoutConstraint.activate([
 			movieImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
 			movieImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-			movieImageView.heightAnchor.constraint(equalToConstant: 200),
+			movieImageView.heightAnchor.constraint(equalToConstant: 150),
 			movieImageView.widthAnchor.constraint(equalToConstant: 100),
 			movieImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -12)])
 		
 		NSLayoutConstraint.activate([
 			movieName.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 18),
 			movieName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-			movieName.topAnchor.constraint(equalTo: movieImageView.topAnchor, constant: 24)])
+			movieName.topAnchor.constraint(equalTo:topAnchor, constant: 10)])
 		
 		NSLayoutConstraint.activate([
 			movieDescription.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 20),

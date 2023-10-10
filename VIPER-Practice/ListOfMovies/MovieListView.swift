@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class MovieListView: UIView {
+	let title = UILabel()
 	let tableView = UITableView()
 	
 	init() {
@@ -17,17 +18,27 @@ class MovieListView: UIView {
 		setView()
 		setConstraints()
 	}
-	///Настраиваем таблицу, а в данном случае регистрируем ячейку в таблице
+	
 	func setView(){
 		tableView.register(MovieViewCell.self, forCellReuseIdentifier: "MovieViewCell")
+		title.text = "New"
+		title.font = .systemFont(ofSize: 32, weight: .bold, width: .condensed)
 	}
-	/// Задаем констрейты для представления
+	
 	func setConstraints(){
+		addSubview(title)
+		title.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
-			tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+			title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+			title.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+			title.rightAnchor.constraint(equalTo: rightAnchor),
+			title.heightAnchor.constraint(equalToConstant: 40)])
+		
+		NSLayoutConstraint.activate([
+			tableView.topAnchor.constraint(equalTo: title.topAnchor, constant: 35),
 			tableView.leftAnchor.constraint(equalTo: leftAnchor),
 			tableView.rightAnchor.constraint(equalTo: rightAnchor),
 			tableView.bottomAnchor.constraint(equalTo: bottomAnchor)])

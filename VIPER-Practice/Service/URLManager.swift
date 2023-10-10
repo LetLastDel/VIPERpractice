@@ -49,6 +49,7 @@ enum Server: String {
 
 enum EndPoint: String {
 	case popular = "3/movie/popular"
+	case latest = "3/movie/top_rated"
 	case movieInfo = "3/movie/"
 	case empty = ""
 }
